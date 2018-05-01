@@ -11,6 +11,7 @@ from zipline.utils.pandas_utils import (
     categorical_df_concat,
     nearest_unequal_elements,
     new_pandas,
+    skip_pipeline_new_pandas,
 )
 
 
@@ -91,7 +92,7 @@ class TestNearestUnequalElements(ZiplineTestCase):
 
 class TestCatDFConcat(ZiplineTestCase):
 
-    @skipIf(new_pandas, '')
+    @skipIf(new_pandas, skip_pipeline_new_pandas)
     def test_categorical_df_concat(self):
 
         inp = [

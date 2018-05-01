@@ -12,7 +12,7 @@ from zipline.pipeline import Pipeline
 from zipline.pipeline.data.testing import TestingDataSet as TDS
 from zipline.testing import chrange, temp_pipeline_engine
 from zipline.utils.pandas_utils import ignore_pandas_nan_categorical_warning, \
-    new_pandas
+    new_pandas, skip_pipeline_new_pandas
 
 
 class LatestTestCase(TestCase):
@@ -59,7 +59,7 @@ class LatestTestCase(TestCase):
             columns=self.assets,
         )
 
-    @skipIf(new_pandas, '')
+    @skipIf(new_pandas, skip_pipeline_new_pandas)
     def test_latest(self):
         columns = TDS.columns
         pipe = Pipeline(

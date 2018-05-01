@@ -86,7 +86,7 @@ from zipline.testing.fixtures import (
 from zipline.testing.predicates import assert_equal
 from zipline.utils.memoize import lazyval
 from zipline.utils.numpy_utils import bool_dtype, datetime64ns_dtype
-from zipline.utils.pandas_utils import new_pandas
+from zipline.utils.pandas_utils import new_pandas, skip_pipeline_new_pandas
 
 
 class RollingSumDifference(CustomFactor):
@@ -1299,7 +1299,7 @@ class ParameterizedFactorTestCase(WithTradingEnvironment, ZiplineTestCase):
 class StringColumnTestCase(WithSeededRandomPipelineEngine,
                            ZiplineTestCase):
 
-    @skipIf(new_pandas, '')
+    @skipIf(new_pandas, skip_pipeline_new_pandas)
     def test_string_classifiers_produce_categoricals(self):
         """
         Test that string-based classifiers produce pandas categoricals as their
